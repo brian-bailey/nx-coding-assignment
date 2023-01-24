@@ -10,9 +10,7 @@ const App = () => {
 
   async function fetchTickets() {
     const data = await fetch('/api/tickets').then();
-    const _data = await data.json();
-    setTickets(_data);
-    console.log(JSON.stringify(_data));
+    setTickets(await data.json());
   }
 
   async function fetchUsers() {
@@ -25,36 +23,24 @@ const App = () => {
     fetchUsers();
   }, []);
 
-  const getUser = (id: number | null) => {
-    return users.find((user) => user.id === id);
-  };
-
-  function setStatus(ticket: Ticket, complete: boolean) {
-    //make put request
-    console.log(
-      `Setting Ticket ${ticket.id} Status to ${
-        complete ? 'Complete' : 'Incomplete'
-      }`
-    );
+  async function setStatus(ticket: Ticket, complete: boolean) {
     fetch(`/api/tickets/${ticket.id}/complete`, {
       method: complete ? 'PUT' : 'DELETE',
-    }).then((response) => {
-      fetchTickets().then(() => console.log('complete'));
-    });
+    }).then(fetchTickets);
   }
 
-  function assignUser(ticket: Ticket, user: number) {
-    //make put request
-    console.log(
-      `Setting Ticket ${ticket.id} assignee from ${
-        getUser(ticket.assigneeId)?.name
-      }, to ${getUser(user)?.name}`
-    );
+  async function assignUser(ticket: Ticket, user: number) {
     fetch(`/api/tickets/${ticket.id}/assign/${user}`, { method: 'PUT' }).then(
-      (response) => {
-        fetchTickets().then(() => console.log('assign complete'));
-      }
+      fetchTickets
     );
+  }
+
+  async function createTicket(ticket: Ticket) {
+    fetch(`/api/tickets/`, {
+      method: 'POST',
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify(ticket),
+    }).then(fetchTickets);
   }
 
   return (
@@ -68,6 +54,7 @@ const App = () => {
               users={users}
               assignUser={assignUser}
               setStatus={setStatus}
+              createTicket={createTicket}
             />
           }
         />
