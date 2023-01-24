@@ -1,11 +1,11 @@
 import { render } from '@testing-library/react';
 
-import EditTicketDetails from './edit-ticket-details';
+import CreateTicket from './create-ticket';
 
-describe('EditTicketDetails', () => {
+describe('CreateTicket', () => {
   it('should render successfully', () => {
     const { baseElement } = render(
-      <EditTicketDetails
+      <CreateTicket
         tickets={[
           {
             assigneeId: 1,

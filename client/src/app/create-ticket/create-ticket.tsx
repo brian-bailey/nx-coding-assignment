@@ -8,13 +8,13 @@ import { useState } from 'react';
 import '/node_modules/primeflex/primeflex.css';
 
 /* eslint-disable-next-line */
-export interface EditTicketDetailsProps {
+export interface CreateTicketProps {
   tickets: Ticket[];
   users: User[];
   onSubmit: (ticket: Ticket) => void;
 }
 
-export function EditTicketDetails(props: EditTicketDetailsProps) {
+export function CreateTicket(props: CreateTicketProps) {
   const [ticket, setTicket] = useState({
     id: getAvailableId(),
     description: 'Write Description Here',
@@ -118,4 +118,4 @@ export function EditTicketDetails(props: EditTicketDetailsProps) {
   );
 }
 
-export default EditTicketDetails;
+export default CreateTicket;

@@ -6,7 +6,7 @@ import { Checkbox } from 'primereact/checkbox';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { useState } from 'react';
-import EditTicketDetails from '../edit-ticket-details/edit-ticket-details';
+import CreateTicket from '../create-ticket/create-ticket';
 
 export interface TicketsProps {
   tickets: Ticket[];
@@ -66,7 +66,7 @@ export function Tickets(props: TicketsProps) {
         onHide={() => setTicketDialog(false)}
         header="Edit Ticket Details"
       >
-        <EditTicketDetails
+        <CreateTicket
           tickets={props.tickets}
           users={props.users}
           onSubmit={(ticket) => {
