@@ -1,8 +1,7 @@
 import { Ticket, User } from '@acme/shared-models';
-import { InputText } from 'primereact/inputtext';
 import { Checkbox } from 'primereact/checkbox';
-import { useParams } from 'react-router-dom';
 import { Dropdown } from 'primereact/dropdown';
+import { useParams } from 'react-router-dom';
 import '/node_modules/primeflex/primeflex.css';
 
 /* eslint-disable-next-line */
