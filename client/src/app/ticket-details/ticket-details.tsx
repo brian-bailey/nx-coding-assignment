@@ -71,7 +71,7 @@ export function TicketDetails(props: TicketDetailsProps) {
                 className="col-fixed"
                 style={{ width: '100px' }}
               >
-                Status
+                Complete
               </label>
               <div className="col">
                 <Checkbox
